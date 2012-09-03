@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+PACKAGE=yandex-contest-invoker
+
+#%:
+#	dh  $@
+
+build/$(PACKAGE)::
+	$(MAKE) -C $(CURDIR)
+
+install/$(PACKAGE)::
+	$(MAKE) -C $(CURDIR)/build install DESTDIR=$(CURDIR)/debian/$(PACKAGE)
+	find $(CURDIR)/debian/$(PACKAGE) -type d -name .svn -exec rm -rf '{}' '+'
+	install -d $(CURDIR)/debian/$(PACKAGE)/var/lib/yandex/contest/invoker/lxc
+	install -m 0644 -D $(CURDIR)/debian/lxc.conf $(CURDIR)/debian/$(PACKAGE)/etc/yandex/contest/invoker/lxc.conf
+	install -m 0644 -D $(CURDIR)/debian/yandex-contest-invoker.sh $(CURDIR)/debian/$(PACKAGE)/etc/profile.d/yandex-contest-invoker.sh
+
+clean::
+

@@ -1,0 +1,5 @@
+yandex-contest-invoker (0.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Filippov Aleksey <sarum9in@yandex-team.ru>  Fri, 10 Aug 2012 16:26:03 +0400

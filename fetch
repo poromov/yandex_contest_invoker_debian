@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cd "$(dirname "$0")"
+
+. ./config.sh
+
+for i in "${libs[@]}"
+do
+    git clone git://github.com/lex4051/"$lib_prefix$i".git "$i"
+done
+
