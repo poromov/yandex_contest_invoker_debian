@@ -6,6 +6,15 @@ cd "$(dirname "$0")"
 
 for i in "${libs[@]}"
 do
-    git clone git://github.com/lex4051/"$lib_prefix$i".git "$i"
+    if [[ -d $i ]]
+    then
+        pushd "$i"
+        git reset --hard
+        git checkout master
+        # TODO clean
+        git pull origin master
+        popd
+    else
+        git clone git://github.com/lex4051/"$lib_prefix$i".git "$i"
+    fi
 done
-

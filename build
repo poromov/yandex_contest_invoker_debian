@@ -5,11 +5,19 @@ cd "$(dirname "$0")"
 . ./config.sh
 
 build()
-(
-    cd "$1"
-    ln -s ../patch/* .
+{
+    pushd "$1"
+    ln -sf ../patch/* .
+cat >system-config.cmake <<EOF
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../common)
+foreach(proj ${libs[*]})
+    include_directories(${CMAKE_SOURCE_DIR}/../${proj}/include)
+    link_directories(${CMAKE_SOURCE_DIR}/../${proj}/build)
+endforeach()
+EOF
     make
-)
+    popd
+}
 
 for i in "${libs[@]}"
 do
