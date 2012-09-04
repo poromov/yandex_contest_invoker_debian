@@ -1,7 +1,27 @@
-#!/bin/bash
+#!/bin/bash -e
 
 cd "$(dirname "$0")"
 
 . ./config.sh
 
-rm -rf "${libs[@]}"
+clean()
+{
+    if [[ -d $1 ]]
+    then
+        pushd "$1"
+        git reset --hard
+        git checkout master
+        git status --porcelain | egrep '^\?\? ' | sed -r 's|^...||' | xargs -d '\n' rm -rf
+        popd
+    fi
+}
+
+if [[ $1 = -f ]]
+then
+    rm -rf "${libs[@]}"
+else
+    for i in "${libs[@]}"
+    do
+        clean "$i"
+    done
+fi

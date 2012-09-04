@@ -16,15 +16,11 @@ PACKAGE=yandex-contest-invoker
 #%:
 #	dh  $@
 
+clean::
+	$(CURDIR)/clean
+
 build/$(PACKAGE)::
-	$(MAKE) -C $(CURDIR)
+	$(CURDIR)/build
 
 install/$(PACKAGE)::
-	$(MAKE) -C $(CURDIR)/build install DESTDIR=$(CURDIR)/debian/$(PACKAGE)
-	find $(CURDIR)/debian/$(PACKAGE) -type d -name .svn -exec rm -rf '{}' '+'
-	install -d $(CURDIR)/debian/$(PACKAGE)/var/lib/yandex/contest/invoker/lxc
-	install -m 0644 -D $(CURDIR)/debian/lxc.conf $(CURDIR)/debian/$(PACKAGE)/etc/yandex/contest/invoker/lxc.conf
-	install -m 0644 -D $(CURDIR)/debian/yandex-contest-invoker.sh $(CURDIR)/debian/$(PACKAGE)/etc/profile.d/yandex-contest-invoker.sh
-
-clean::
-
+	$(CURDIR)/install $(CURDIR)/debian/$(PACKAGE)

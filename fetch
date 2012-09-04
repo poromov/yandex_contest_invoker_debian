@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 cd "$(dirname "$0")"
 
@@ -6,12 +6,10 @@ cd "$(dirname "$0")"
 
 for i in "${libs[@]}"
 do
+    ./clean "$i"
     if [[ -d $i ]]
     then
         pushd "$i"
-        git reset --hard
-        git checkout master
-        # TODO clean
         git pull origin master
         popd
     else

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 cd "$(dirname "$0")"
 
@@ -9,12 +9,29 @@ build()
     pushd "$1"
     ln -sf ../patch/* .
 cat >system-config.cmake <<EOF
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../common)
+set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../common)
+set(ENABLE_TESTS no)
 foreach(proj ${libs[*]})
-    include_directories(${CMAKE_SOURCE_DIR}/../${proj}/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../${proj}/build)
+    include_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/include)
+    link_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/build)
 endforeach()
 EOF
+    if [[ -d java ]]
+    then
+        pushd java
+        if [[ $FAKEROOTKEY ]]
+        then
+            sudo -u "$USER" mvn compile
+        else
+            mvn compile
+        fi
+        popd
+        ./jni_gen.sh
+        ./jni_validate.sh
+    fi
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.7 ..
     make
     popd
 }
