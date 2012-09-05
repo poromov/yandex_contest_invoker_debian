@@ -19,12 +19,7 @@ EOF
     if [[ -d java ]]
     then
         pushd java
-        if [[ $FAKEROOTKEY ]]
-        then
-            sudo -u "$USER" mvn compile
-        else
-            mvn compile
-        fi
+        mvn package -DskipTests
         popd
         ./jni_gen.sh
         ./jni_validate.sh
