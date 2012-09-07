@@ -10,7 +10,7 @@ build()
     ln -sf ../patch/* .
 cat >system-config.cmake <<EOF
 set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../common)
-set(ENABLE_TESTS no)
+set(ENABLE_TESTS ${ENABLE_TESTS:-no})
 foreach(proj ${libs[*]})
     include_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/include)
     link_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/build)
