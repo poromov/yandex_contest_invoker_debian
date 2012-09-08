@@ -4,6 +4,11 @@ cd "$(dirname "$0")"
 
 . ./config.sh
 
+if [[ -f user-config.sh ]]
+then
+    . ./user-config.sh
+fi
+
 build()
 {
     pushd "$1"
@@ -11,6 +16,10 @@ build()
 cat >system-config.cmake <<EOF
 set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../common)
 set(ENABLE_TESTS ${ENABLE_TESTS:-no})
+set(CMAKE_BUILD_TYPE ${BUILD_TYPE:-Release})
+set(CMAKE_INSTALL_PREFIX ${INSTALL_PREFIX:-/usr})
+set(CMAKE_CXX_COMPILER ${CXX_COMPILER:-/usr/bin/g++-4.7})
+set(CMAKE_C_COMPILER ${C_COMPILER:-/usr/bin/gcc-4.7})
 foreach(proj ${libs[*]})
     include_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/include)
     link_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/build)
@@ -26,7 +35,7 @@ EOF
     fi
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.7 ..
+    cmake ..
     make
     popd
 }
