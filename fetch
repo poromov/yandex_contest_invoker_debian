@@ -10,7 +10,8 @@ do
     if [[ -d $i ]]
     then
         pushd "$i"
-        git pull origin master
+        git fsck
+        git pull
         popd
     else
         git clone git://github.com/lex4051/"$lib_prefix$i".git "$i"
