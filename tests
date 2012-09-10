@@ -1,0 +1,54 @@
+#!/bin/bash -e
+
+. /etc/profile
+
+cd "$(dirname "$0")"
+
+. ./config.sh
+
+tests_log="$PWD/tests.log"
+
+if [[ $EUID != 0 ]]
+then
+    echo "Tests should be run as root." >&2
+    exit 1
+fi
+
+rm -f "$tests_log"
+
+trap on_exit EXIT INT TERM
+
+on_exit()
+{
+    if [[ -f $tmpfile ]]
+    then
+        rm -f "$tmpfile"
+    fi
+}
+
+tmpfile="$(mktemp)"
+
+run_tests()
+{
+    "$@" &>>"$tests_log" || true
+}
+
+run_tests_io_wrap()
+{
+    "$@" &>"$tmpfile" || cat "$tmpfile" >>"$tests_log"
+}
+
+for i in "${libs[@]}"
+do
+    pushd "$i"
+    if [[ -d java ]]
+    then
+        pushd java
+            run_tests_io_wrap mvn test
+        popd
+    fi
+    pushd build
+        run_tests ctest --output-on-failure
+    popd
+    popd
+done
