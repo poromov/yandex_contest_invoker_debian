@@ -14,6 +14,6 @@ do
         git pull
         popd
     else
-        git clone git://github.com/lex4051/"$lib_prefix$i".git "$i"
+        git clone "$repo/$lib_prefix$i.git" "$i"
     fi
 done
