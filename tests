@@ -52,3 +52,5 @@ do
     popd
     popd
 done
+
+chown --reference=tests -R .
