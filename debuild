@@ -2,4 +2,4 @@
 
 cd "$(dirname "$0")"
 
-exec debuild --no-tgz-check -I
+exec debuild --no-tgz-check -I "$@"
