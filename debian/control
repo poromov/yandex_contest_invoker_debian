@@ -8,7 +8,7 @@ Homepage: http://wiki.yandex-team.ru/ContestSystem
 
 Package: yandex-contest-invoker
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, lxc (= 0.7.5-0ubuntu0-lxctl7.3), linux-image-3.0.4-2-lxc | linux-image-3.0.4-2-lxcna
 Description: Restricted execution in LXC.
  Library allows user execute arbitrary group of processes
  in restricted environment using LXC.
