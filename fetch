@@ -4,9 +4,10 @@ cd "$(dirname "$0")"
 
 . ./config.sh
 
+./clean
+
 for i in "${libs[@]}"
 do
-    ./clean "$i"
     if [[ -d $i ]]
     then
         pushd "$i"
