@@ -28,8 +28,8 @@ EOF
     fi
     mkdir -p build
     cd build
-    cmake -DCMAKE_CXX_COMPILER="${CXX_COMPILER:-/usr/bin/g++-4.7}" -DCMAKE_C_COMPILER="${C_COMPILER:-/usr/bin/gcc-4.7}" ..
-    make
+    cmake "${CMAKE_FLAGS[@]}" ..
+    make "${MFLAGS[@]}"
     popd
 }
 
