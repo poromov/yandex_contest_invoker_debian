@@ -1,3 +1,9 @@
+yandex-contest-invoker (0.5-1) unstable; urgency=low
+
+  * invoker fixes, invoker::Process::id(), invoker-flowctl-pipectl, invoker-flowctl-game.
+
+ -- Filippov Aleksey <sarum9in@yandex-team.ru>  Thu, 19 Sep 2012 13:20:00 +0400
+
 yandex-contest-invoker (0.3-2) unstable; urgency=low
 
   * linux-image-3.0.4-2-lxc | linux-image-3.0.4-2-lxcna dependency.
