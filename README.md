@@ -26,7 +26,9 @@ Cleaning
 
     - *clean* will reset sources to their original state (removing all files not included in selected commit).
 
-    - *clean -f* will remove all sources.
+    - *clean -r* will remove all sources.
+
+    - *clean -f* will run clean even if *repack* is set.
 
 SVN
 ---
@@ -47,3 +49,4 @@ Misc
 
     - *build* script may be used directly (but it's result can't be used in debian package building).
 
+    - If you want to only repack debian package without rebuilding, set *repack* variable in *user-config.sh*.

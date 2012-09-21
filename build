@@ -33,6 +33,11 @@ EOF
     popd
 }
 
+if [[ $repack ]]
+then
+    exit 0
+fi
+
 for i in "${libs[@]}"
 do
     build "$i"

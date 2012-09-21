@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 . ./config.sh
 
-./clean
+./clean -f
 
 for i in "${libs[@]}"
 do

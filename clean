@@ -15,7 +15,23 @@ clean()
     fi
 }
 
-if [[ $1 = -f ]]
+while getopts "frh" arg
+do
+    case "$arg" in
+        f) force=1 ;;
+        r) recursive=1 ;;
+        h) ;;&
+        ?) printf "Usage: %s: [-r recursive] [-f ignore repack]\n" "$0" 1>&2 && exit 1;;
+    esac
+done
+shift "$(echo "$OPTIND" - 1 | bc)"
+
+if [[ $repack && -z $force ]]
+then
+    exit 0
+fi
+
+if [[ $recursive ]]
 then
     rm -rf "${libs[@]}"
 else
