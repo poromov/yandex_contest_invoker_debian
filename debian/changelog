@@ -1,3 +1,9 @@
+yandex-contest-invoker (0.7-1) unstable; urgency=low
+
+  * invoker fixes, Process::ResourceUsage changes, invoker::~::wait() bug fix, other minor changes.
+
+ -- Filippov Aleksey <sarum9in@yandex-team.ru>  Thu, 19 Sep 2012 13:20:00 +0400
+
 yandex-contest-invoker (0.5-1) unstable; urgency=low
 
   * invoker fixes, invoker::Process::id(), invoker-flowctl-pipectl, invoker-flowctl-game.
