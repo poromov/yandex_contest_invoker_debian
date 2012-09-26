@@ -13,4 +13,5 @@ command_if()
 command_if '^!' svn delete
 svn add --force --depth=infinity .
 command_if '\.git' svn commit --non-recursive --message "Invoker update (.git files)." "$@"
+svn diff | "$PAGER"
 exec svn commit
