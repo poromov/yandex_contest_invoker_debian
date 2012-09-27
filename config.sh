@@ -1,5 +1,5 @@
 lib_prefix=yandex_contest_
-libs=(common system invoker invoker_compat_common invoker_compat_jni invoker_flowctl_pipectl invoker_flowctl_game)
+libs=(common system invoker invoker_compat_common invoker_flowctl_game invoker_compat_jni invoker_flowctl_pipectl)
 repo=git://github.com/sarum9in
 
 invoker_compat_jni_version="1.0.0-BUILD-SNAPSHOT"
