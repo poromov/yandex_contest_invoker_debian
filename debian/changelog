@@ -1,8 +1,14 @@
+yandex-contest-invoker (0.9-1) unstable; urgency=low
+
+  * invoker-flowctl-game implementation except user time limit for iteration (with Java bindings).
+
+ -- Filippov Aleksey <sarum9in@yandex-team.ru>  Thu, 27 Sep 2012 19:30:00 +0400
+
 yandex-contest-invoker (0.7-1) unstable; urgency=low
 
   * invoker fixes, Process::ResourceUsage changes, invoker::~::wait() bug fix, other minor changes.
 
- -- Filippov Aleksey <sarum9in@yandex-team.ru>  Thu, 19 Sep 2012 13:20:00 +0400
+ -- Filippov Aleksey <sarum9in@yandex-team.ru>  Thu, 24 Sep 2012 18:20:48 +0400
 
 yandex-contest-invoker (0.5-1) unstable; urgency=low
 
