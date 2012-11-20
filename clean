@@ -24,7 +24,7 @@ do
         ?) printf "Usage: %s: [-r recursive] [-f ignore repack]\n" "$0" 1>&2 && exit 1;;
     esac
 done
-shift "$(echo "$OPTIND" - 1 | bc)"
+shift $((OPTIND - 1))
 
 if [[ $repack && -z $force ]]
 then
