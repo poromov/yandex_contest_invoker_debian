@@ -1,3 +1,21 @@
+yandex-contest-invoker (0.9-4) lucid; urgency=low
+
+  * change dependency
+
+ -- Lev Tolmachev <tolmalev@yandex-team.ru>  Mon, 19 Nov 2012 16:50:41 +0400
+
+yandex-contest-invoker (0.9-3) lucid; urgency=low
+
+  * change dependency
+
+ -- Lev Tolmachev <tolmalev@yandex-team.ru>  Wed, 14 Nov 2012 14:16:46 +0400
+
+yandex-contest-invoker (0.9-2) lucid; urgency=low
+
+  * change dependencyx
+
+ -- Lev Tolmachev <tolmalev@yandex-team.ru>  Tue, 13 Nov 2012 15:47:17 +0400
+
 yandex-contest-invoker (0.9-1) unstable; urgency=low
 
   * invoker-flowctl-game implementation except user time limit for iteration (with Java bindings).
