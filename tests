@@ -38,7 +38,7 @@ run_tests_io_wrap()
     "$@" &>"$tmpfile" || cat "$tmpfile" >>"$tests_log"
 }
 
-for i in "${libs[@]}"
+for i in "${alllibs[@]}"
 do
     pushd "$i"
     if [[ -d java ]]

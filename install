@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 
 . ./config.sh
 
-for i in "${libs[@]}"
+for i in "${alllibs[@]}"
 do
     pushd "$i/build"
     make install DESTDIR="$root"

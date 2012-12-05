@@ -9,11 +9,11 @@ build()
     pushd "$1"
     ln -sf ../patch/* .
 cat >system-config.cmake <<EOF
-set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../common)
+set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../bunsan_common \${CMAKE_SOURCE_DIR}/../common)
 set(ENABLE_TESTS ${ENABLE_TESTS:-no})
 set(CMAKE_BUILD_TYPE ${BUILD_TYPE:-Release})
 set(CMAKE_INSTALL_PREFIX ${INSTALL_PREFIX:-/usr})
-foreach(proj ${libs[*]})
+foreach(proj ${alllibs[*]})
     include_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/include)
     link_directories(\${CMAKE_SOURCE_DIR}/../\${proj}/build)
 endforeach()
@@ -38,7 +38,7 @@ then
     exit 0
 fi
 
-for i in "${libs[@]}"
+for i in "${alllibs[@]}"
 do
     build "$i"
 done

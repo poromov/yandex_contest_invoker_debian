@@ -33,9 +33,9 @@ fi
 
 if [[ $recursive ]]
 then
-    rm -rf "${libs[@]}"
+    rm -rf "${alllibs[@]}"
 else
-    for i in "${libs[@]}"
+    for i in "${alllibs[@]}"
     do
         clean "$i"
     done

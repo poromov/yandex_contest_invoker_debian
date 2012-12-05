@@ -6,15 +6,25 @@ cd "$(dirname "$0")"
 
 ./clean -f
 
-for i in "${libs[@]}"
-do
-    if [[ -d $i ]]
+fetch()
+{
+    if [[ -d $1 ]]
     then
-        pushd "$i"
+        pushd "$1"
         git fsck
         git pull
         popd
     else
-        git clone "$repo/$lib_prefix$i.git" "$i"
+        git clone "$repo/$1.git" "$1"
     fi
+}
+
+for i in "${extlibs[@]}"
+do
+    fetch "$i"
+done
+
+for i in "${libs[@]}"
+do
+    fetch "$lib_prefix$i"
 done
