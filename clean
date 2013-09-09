@@ -10,7 +10,7 @@ clean()
     then
         pushd "$1"
         git reset --hard
-        git status --porcelain | egrep '^\?\? ' | sed -r 's|^...||' | xargs -d '\n' rm -rf
+        git clean -dfx
         popd
     fi
 }

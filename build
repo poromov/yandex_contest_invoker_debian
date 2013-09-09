@@ -9,7 +9,7 @@ build()
     pushd "$1"
     ln -sf ../patch/* .
 cat >system-config.cmake <<EOF
-set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../bunsan_common \${CMAKE_SOURCE_DIR}/../common)
+set(CMAKE_MODULE_PATH \${CMAKE_SOURCE_DIR}/../bunsan_cmake \${CMAKE_SOURCE_DIR}/../bunsan_testing \${CMAKE_SOURCE_DIR}/../yandex_contest_common)
 set(ENABLE_TESTS ${ENABLE_TESTS:-no})
 set(CMAKE_BUILD_TYPE ${BUILD_TYPE:-Release})
 set(CMAKE_INSTALL_PREFIX ${INSTALL_PREFIX:-/usr})

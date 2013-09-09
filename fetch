@@ -19,12 +19,7 @@ fetch()
     fi
 }
 
-for i in "${extlibs[@]}"
+for i in "${alllibs[@]}"
 do
     fetch "$i"
-done
-
-for i in "${libs[@]}"
-do
-    fetch "$lib_prefix$i"
 done
