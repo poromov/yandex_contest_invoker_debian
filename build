@@ -38,6 +38,10 @@ then
     exit 0
 fi
 
+echo "prefix=/usr" > lxc.pc
+cat "$lxc_pc" >>lxc.pc
+export PKG_CONFIG_PATH="$PWD"
+
 for i in "${alllibs[@]}"
 do
     build "$i"
